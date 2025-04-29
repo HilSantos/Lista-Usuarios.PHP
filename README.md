@@ -115,4 +115,4 @@ INSERT INTO tb_usuarios (
  '2000-12-01', 'senha654hashed', 'sal654', '31955554444',
  'edu2024', 2, NOW());
 
--- Atualize a pagina e faça o teste --
+-- Atualize a pagina e faça o teste (explo: http://localhost/proj35/listausuarios.php) --
