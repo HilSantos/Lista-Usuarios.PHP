@@ -35,7 +35,16 @@ $banco = "db_proj35";
 $db_user = "adminti35";
 $db_senha = "789abc";
 $link = mysqli_connect($servidor, $db_user, $db_senha, $banco);
-$sql = "SELECT id_usuario, nome_usuario, cpf_usuario, email_usuario, telefone_usuario, nivel_usuario FROM tb_usuarios";
+if(isset($_GET["buscar"])){
+    $termo = $_GET["buscar"];
+$sql = "SELECT id_usuario, nome_usuario, cpf_usuario, email_usuario, telefone_usuario, nivel_usuario
+    FROM tb_usuarios WHERE nome_usuario LIKE '%$termo%'";}
+
+    else{
+        $sql = "SELECT id_usuario, nome_usuario, cpf_usuario, email_usuario, telefone_usuario, nivel_usuario
+    FROM tb_usuarios";
+}
+
 $result = mysqli_query($link, $sql);
 ?>
 
@@ -45,11 +54,20 @@ $result = mysqli_query($link, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Usuarios</title>
+    <link rel="stylesheet" href="lista.css">
 </head>
 <body>
     <h1>Lista Usuarios</h1>
     <br>
     <br>
+    <div>
+<form action="listausuarios.php" method="get">
+        <input type="text" name="buscar" placeholder="Buscar por nome">
+        <input type="submit" value="pesquisar">
+        <input type="button" value="voltar">
+
+</form>
+    </div>
     <table border = "1">
         <tr>
             <th>*****</th>
@@ -70,7 +88,7 @@ $result = mysqli_query($link, $sql);
         <td><?= $tbl[3] ?></td>
         <td><?= $tbl[4] ?></td>
         <td><?= $tbl[2] ?></td>
-        <td><?= $tbl[5] ?></td>
+        <td><?= $tbl[5]== 1?"Usuario":"Administrador" ?></td>
         <td></td>
         <td></td>
         </tr>
