@@ -54,6 +54,7 @@ $result = mysqli_query($link, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Usuarios</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
     <link rel="stylesheet" href="lista.css">
 </head>
 <body>
@@ -83,7 +84,9 @@ $result = mysqli_query($link, $sql);
         while($tbl = mysqli_fetch_array($result)){
         ?>
         <tr>
-        <td></td>
+        <td><a href="detalhausuario.php?id=<?=$tbl[0] ?>"><span class="material-symbols-outlined">search</span>
+</a>
+        </td>
         <td><?= $tbl[1] ?></td>
         <td><?= $tbl[3] ?></td>
         <td><?= $tbl[4] ?></td>
