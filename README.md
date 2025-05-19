@@ -54,18 +54,19 @@ $result = mysqli_query($link, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Usuarios</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="lista.css">
 </head>
 <body>
     <h1>Lista Usuarios</h1>
     <br>
-    <br>
     <div>
 <form action="listausuarios.php" method="get">
         <input type="text" name="buscar" placeholder="Buscar por nome">
         <input type="submit" value="pesquisar">
-        <input type="button" value="voltar">
+        <a href="listausuarios.php"><input type="button" value="voltar"></a>
+
+<hr>
 
 </form>
     </div>
@@ -86,14 +87,24 @@ $result = mysqli_query($link, $sql);
         <tr>
         <td><a href="detalhausuario.php?id=<?=$tbl[0] ?>"><span class="material-symbols-outlined">search</span>
 </a>
-        </td>
+</td>
         <td><?= $tbl[1] ?></td>
         <td><?= $tbl[3] ?></td>
         <td><?= $tbl[4] ?></td>
         <td><?= $tbl[2] ?></td>
-        <td><?= $tbl[5]== 1?"Usuario":"Administrador" ?></td>
-        <td></td>
-        <td></td>
+        <td><?= $tbl[5]== 1?"Usuario":"Administrador" ?>
+        <td><a href="editeusuario.php?id=<?=$tbl[0]?>">
+            <span class="material-symbols-outlined">
+                manage_accounts
+            </span>
+        </a>
+        </td>
+        <td>
+            <a href="deleteusuario.php?id=<?=$tbl[0]?>">
+            <span class="material-symbols-outlined">
+delete
+</span>
+            </a>
         </tr>
         <?php
         }
